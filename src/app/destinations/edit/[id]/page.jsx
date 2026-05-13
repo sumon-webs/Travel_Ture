@@ -4,7 +4,7 @@ import React from 'react';
 const EditIdPage = async ({ params }) => {
     const { id } = await params;
 
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    const res = await fetch(`https://travels-server-secm.onrender.com/${id}`, {
         cache: "no-store",
     });
 

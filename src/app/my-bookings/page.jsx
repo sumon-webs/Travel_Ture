@@ -9,7 +9,7 @@ const MyBookingPage = async () => {
 
     const id = session?.user?.id;
 
-    const res = await fetch(`http://localhost:5000/bookings/${id}`);
+    const res = await fetch(`https://travels-server-secm.onrender.com/bookings/${id}`);
     const bookings = await res.json();
 
     return (

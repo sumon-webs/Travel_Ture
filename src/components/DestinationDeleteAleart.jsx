@@ -12,7 +12,7 @@ export function DestinationDelete({ destination }) {
     const { _id, destinationName } = destination
 
     const handleDelete = async () => {
-        const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+        const res = await fetch(`https://travels-server-secm.onrender.com/destination/${_id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

@@ -2,7 +2,7 @@ import DestinationCard from "@/components/DestinationCard";
 
 const AllDestinationsPage = async () => {
 
-    const res = await fetch("http://localhost:5000/destination");
+    const res = await fetch("https://travels-server-secm.onrender.com/destination");
     const destinations = await res.json();
 
 

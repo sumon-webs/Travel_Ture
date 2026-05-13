@@ -28,7 +28,7 @@ const DestinationEditForm = ({ destination }) => {
         const formData = new FormData(e.currentTarget);
         const newDestination = Object.fromEntries(formData.entries());
 
-        const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+        const res = await fetch(`https://travels-server-secm.onrender.com/destination/${_id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': "application/json"

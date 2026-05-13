@@ -13,7 +13,7 @@ export function BookingDelete({id}) {
     const user = session?.user
 
     const handleDelete = async () => {
-        const res = await fetch(`http://localhost:5000/bookings/${user?.id}/${id}`,{
+        const res = await fetch(`https://travels-server-secm.onrender.com/bookings/${user?.id}/${id}`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'

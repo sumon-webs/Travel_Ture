@@ -12,7 +12,7 @@ const DestinationAddForm = () => {
         const formData = new FormData(e.currentTarget);
         const newDestination = Object.fromEntries(formData.entries());
 
-        const res = await fetch("http://localhost:5000/destination", {
+        const res = await fetch("https://travels-server-secm.onrender.com/destination", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
