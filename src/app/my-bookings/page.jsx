@@ -9,7 +9,15 @@ const MyBookingPage = async () => {
 
     const id = session?.user?.id;
 
-    const res = await fetch(`https://travels-server-secm.onrender.com/bookings/${id}`);
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     const bookings = await res.json();
 
     return (

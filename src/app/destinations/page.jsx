@@ -1,8 +1,14 @@
 import DestinationCard from "@/components/DestinationCard";
 
+export const dynamic = "force-dynamic";
+
 const AllDestinationsPage = async () => {
 
-    const res = await fetch("https://travels-server-secm.onrender.com/destination");
+
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/destination`,
+        { cache: "no-store" }
+    );
     const destinations = await res.json();
 
 

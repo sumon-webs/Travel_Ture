@@ -1,21 +1,29 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
 import { FieldError, Form, Input, Label, TextField, Select, ListBox, TextArea, Button, Card } from "@heroui/react";
+import { getSession } from "better-auth/api";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const DestinationAddForm = () => {
+
     const router = useRouter()
+
     const handlePost = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const newDestination = Object.fromEntries(formData.entries());
 
-        const res = await fetch("https://travels-server-secm.onrender.com/destination", {
+        const { data: tokenData } = await authClient.token()
+        console.log(tokenData)
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                 authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(newDestination)
         })

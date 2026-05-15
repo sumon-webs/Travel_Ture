@@ -13,13 +13,20 @@ import {
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import BookingCard from "@/components/BookingCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationDetails = async ({ params }) => {
 
     const { id } = await params;
 
-    const res = await fetch(`https://travels-server-secm.onrender.com/destination/${id}`, {
-        cache: "no-store",
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
     });
 
     const destination = await res.json();
@@ -37,7 +44,7 @@ const DestinationDetails = async ({ params }) => {
     } = destination
 
 
-   
+
 
     return (
         <div className="container mx-auto px-4 py-10 space-y-8">
@@ -132,7 +139,7 @@ const DestinationDetails = async ({ params }) => {
                 </div>
 
                 {/* RIGHT SIDEBAR (BOOKING CARD) */}
-              <BookingCard destination = {destination}/>
+                <BookingCard destination={destination} />
 
             </div>
         </div>

@@ -1,7 +1,7 @@
 import toast from "react-hot-toast"
 
 export const postBookingData = async( bookingData) =>{
-    const res = await fetch(`https://travels-server-secm.onrender.com/bookings`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`,{
         method:"POST",
         headers:{
             'Content-Type': 'application/json'
